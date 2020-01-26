@@ -299,7 +299,7 @@
     margin-left: -2em; }
   .switch-ios.switch-light input:checked ~ span {
     border-color: #4BD865;
-    box-shadow: inset 0 0 0 30px #4BD865; }
+    box-shadow: inset 0 0 0 30px #4BD865;}
   .switch-ios.switch-light input:checked ~ span span:first-of-type {
     opacity: 0; }
   .switch-ios.switch-light input:checked ~ span span:last-of-type {
