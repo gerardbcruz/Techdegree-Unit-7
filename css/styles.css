@@ -10,12 +10,52 @@ img {
 
 .profile-name {
   font-size: 16px;
+  margin-left: 10px;
 }
 
 input,
 textarea,
 select {
+  border: 1px solid #DFDFDF;
+  border-radius: 5px;
+  padding-left: 20px;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  display: block;
   color: #676666;
+}
+
+h1,
+.bell-icon,
+.profile,
+.traffic-nav li,
+.arrow,
+.switch-light,
+button
+ {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button {
+  border-radius: 5px;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  padding: 20px 0;
+}
+
+.button-primary {
+  background: #7377BF;
+}
+
+.button-disabled {
+  background: #B2B2B2;
 }
 
 /* CSS Grid */
@@ -54,7 +94,7 @@ h1 {
   font-size: 28px;
 }
 
-.bold {
+.light {
   font-weight: 300;
 }
 
@@ -62,6 +102,11 @@ h1 {
   display: block;
   width: 28px;
   height: 28px;
+  transition: transform .6s ease-out;
+}
+
+.bell-icon:hover {
+  transform: scale(1.3) rotate(-30deg);
 }
 
 .profile {
@@ -76,10 +121,6 @@ h1 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-}
-
-.profile-name {
-  margin-left: 10px;
 }
 
 /* Navigation Styles */
@@ -101,6 +142,17 @@ nav a {
 main {
   grid-area: main;
   display: grid;
+}
+
+.traffic,
+.daily-traffic,
+.mobile-users,
+.social-stats,
+.new-members,
+.recent-activity,
+.message,
+.settings {
+  padding: 40px 3%;
 }
 
 main h3 {
@@ -130,26 +182,30 @@ main h3 {
 }
 
 input[type="search"] {
-  border: 1px solid #DFDFDF;
-  border-radius: 5px;
-  padding-left: 20px;
-  font-size: 16px;
-  outline: none;
-  width: 100%;
   height: 45px;
-  display: block;
 }
 
-.traffic,
-.daily-traffic,
-.mobile-users,
-.social-stats,
-.new-members,
-.recent-activity,
-.message,
-.settings {
-  padding: 40px 3%;
+/* Alert Banner Styles */
+#alert {
+  padding: 20px 3% 0;
 }
+
+.alert-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #7377BF;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0 20px;
+}
+
+.alert-banner-close {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Traffic Section Styles */
 
 .traffic {
   border-bottom: 1px solid #DFDFDF;
@@ -168,9 +224,18 @@ input[type="search"] {
 }
 
 .traffic-nav li {
-  margin-left: 20px;
+  margin-left: 25px;
   font-size: 14px;
 }
+
+/* Charts Containers */
+
+.widget-container-full,
+.widget-container-half {
+  width: 92vw;
+}
+
+/* Social Stats Section */
 
 .social-stats {
   border-top: 1px solid #DFDFDF;
@@ -211,6 +276,7 @@ svg {
 .social-text {
   margin-left: 30px;
 }
+
 .social-text p:first-child {
   font-size: 20px;
   font-weight: 700;
@@ -228,20 +294,23 @@ svg {
   border-top: 1px solid #DFDFDF;
 }
 
-/* New Members Section */
+/* New Members Section & Recent Activity Section */
 
-.members-container {
+.members-container,
+.recent-activity-container {
   display: flex;
   align-items: center;
   padding: 15px 0;
   border-bottom: 1px solid #DFDFDF;
 }
 
-.members-text {
+.members-text,
+.recent-activity-text {
   padding-left: 10px;
 }
 
-.members-text p {
+.members-text p,
+.recent-activity-text p {
   margin: 0;
 }
 
@@ -253,22 +322,6 @@ svg {
 
 .members-container p:last-child {
   margin-left: auto;
-}
-
-/* Recent Activity Section */
-.recent-activity-container {
-  display: flex;
-  align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px solid #DFDFDF;
-}
-
-.recent-activity-text {
-  padding-left: 10px;
-}
-
-.recent-activity-text p {
-  margin: 0;
 }
 
 .recent-activity-text p:last-child {
@@ -293,41 +346,21 @@ svg {
   color: #B8B8B8;
 }
 
-.message input {
-  border: 1px solid #DFDFDF;
-  border-radius: 5px;
-  padding-left: 20px;
-  font-size: 16px;
-  outline: none;
-  width: 100%;
+.message input,
+.message textarea {
   height: 45px;
   background: #FBFBFB;
   display: block;
 }
 
 .message textarea {
-  border: 1px solid #DFDFDF;
-  border-radius: 5px;
-  padding-left: 20px;
   padding-top: 20px;
-  font-size: 16px;
-  outline: none;
-  width: 100%;
   height: 150px;
-  background: #FBFBFB;
-  display: block;
   resize: none;
 }
 
 .message button {
   width: 100%;
-  background: #7377BF;
-  border-radius: 5px;
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #fff;
-  padding: 20px 0;
-  border: none;
 }
 
 /* Settings Section */
@@ -367,18 +400,11 @@ svg {
 }
 
 #timezone {
-  border: 1px solid #DFDFDF;
-  border-radius: 5px;
-  padding-left: 20px;
   /* -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; */
-  font-size: 16px;
-  outline: none;
-  width: 100%;
   height: 45px;
   background: #FBFBFB;
-  display: block;
   color: #B8B8B8;
 }
 
@@ -388,14 +414,7 @@ svg {
 }
 
 .settings-button button{
-  background: #7377BF;
-  border-radius: 5px;
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #fff;
-  border: none;
   width: 48%;
-  padding: 20px 0;
 }
 
 /****** Media Queries ******/
@@ -414,7 +433,8 @@ svg {
 
   .main-header,
   .traffic,
-  .social-stats {
+  .social-stats,
+  #alert {
     grid-column: 1 / span 2;
   }
 
@@ -463,6 +483,14 @@ svg {
     border-right: 1px solid #DFDFDF;
   }
 
+  /* Charts Containers */
+  .widget-container-full {
+    width: 88vw;
+  }
+
+  .widget-container-half {
+    width: 40vw;
+  }
 }
 
 @media screen and (min-width: 1024px) {

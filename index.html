@@ -8,6 +8,7 @@
   <title>Web App Dashboard</title>
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/toggle-switch.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -15,7 +16,7 @@
   <!-- Header -->
   <header>
     <div class="header-inner">
-      <h1>Your<span class="bold">App&trade;</span></h1>
+      <h1>Chart<span class="light">App&trade;</span></h1>
 
         <div class="bell">
           <img class="bell-icon" src="icons/icon-bell.svg" alt="bell">
@@ -79,10 +80,7 @@
 
       <div class="widget-container-full">
         <!-- Line Graph goes here -->
-        <img src="images/To Remove/traffic-placeholder.png" alt="">
-        <canvas id="traffic-chart">
-
-        </canvas>
+        <canvas id="traffic-chart"></canvas>
       </div>
     </section>
 
@@ -92,10 +90,7 @@
 
       <div class="widget-container-half">
         <!-- Bar Graph goes here -->
-        <img src="images/To Remove/trafficdaily-placeholder.png" alt="">
-        <canvas id="daily-traffic-chart">
-
-        </canvas>
+        <canvas id="daily-traffic-chart"></canvas>
       </div>
     </section>
 
@@ -105,10 +100,7 @@
 
       <div class="widget-container-half">
         <!-- Doughnut Graph goes here -->
-        <img src="images/To Remove/mobileusers-placeholder.png" alt="">
-        <canvas id="mobile-users-chart">
-
-        </canvas>
+        <canvas id="mobile-users-chart"></canvas>
       </div>
     </section>
 
@@ -120,7 +112,7 @@
         <div class="social-container">
           <div class="social-image">
             <!-- Inline SVG - Twitter -->
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
             <path class="twitter-icon" fill="red" d="M32,3.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6C25.8,0.8,24,0,22.2,0
             	c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5C10.3,7.8,5.5,5.2,2.2,1.2c-0.6,1-0.9,2.1-0.9,3.3c0,2.3,1.2,4.3,2.9,5.5
@@ -139,7 +131,7 @@
         <div class="social-container">
           <div class="social-image">
             <!-- Inline SVG - Facebook -->
-            <svg enable-background="new 0 0 56.693 56.693" height="56.693px" id="Layer_1" version="1.1" viewBox="0 0 56.693 56.693" width="56.693px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path class="facebook-icon" fill="green" d="M40.43,21.739h-7.645v-5.014c0-1.883,1.248-2.322,2.127-2.322c0.877,0,5.395,0,5.395,0V6.125l-7.43-0.029  c-8.248,0-10.125,6.174-10.125,10.125v5.518h-4.77v8.53h4.77c0,10.947,0,24.137,0,24.137h10.033c0,0,0-13.32,0-24.137h6.77  L40.43,21.739z"/></svg>
+            <svg enable-background="new 0 0 56.693 56.693" height="56.693px" version="1.1" viewBox="0 0 56.693 56.693" width="56.693px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path class="facebook-icon" fill="green" d="M40.43,21.739h-7.645v-5.014c0-1.883,1.248-2.322,2.127-2.322c0.877,0,5.395,0,5.395,0V6.125l-7.43-0.029  c-8.248,0-10.125,6.174-10.125,10.125v5.518h-4.77v8.53h4.77c0,10.947,0,24.137,0,24.137h10.033c0,0,0-13.32,0-24.137h6.77  L40.43,21.739z"/></svg>
           </div>
           <div class="social-text">
             <p>Facebook</p>
@@ -150,9 +142,9 @@
         <div class="social-container">
           <div class="social-image">
             <!-- Inline SVG - Google+ -->
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-            <path class="googleplus-icon"fill="blue" d="M17.7,25.7c0-0.3,0-0.5-0.1-0.8c-0.1-0.2-0.1-0.5-0.2-0.7c-0.1-0.2-0.2-0.4-0.3-0.7c-0.2-0.2-0.3-0.4-0.4-0.6
+            <path class="googleplus-icon" fill="blue" d="M17.7,25.7c0-0.3,0-0.5-0.1-0.8c-0.1-0.2-0.1-0.5-0.2-0.7c-0.1-0.2-0.2-0.4-0.3-0.7c-0.2-0.2-0.3-0.4-0.4-0.6
             	c-0.1-0.2-0.3-0.3-0.5-0.6c-0.2-0.2-0.4-0.4-0.5-0.5c-0.1-0.1-0.3-0.3-0.6-0.5c-0.3-0.2-0.5-0.4-0.6-0.4s-0.3-0.2-0.6-0.4
             	c-0.3-0.2-0.5-0.4-0.6-0.4c-0.2,0-0.5,0-1,0c-0.7,0-1.4,0-2,0.1c-0.7,0.1-1.4,0.2-2.1,0.5c-0.7,0.2-1.3,0.5-1.9,0.9s-1,0.8-1.3,1.4
             	c-0.3,0.6-0.5,1.3-0.5,2.1c0,0.9,0.2,1.7,0.7,2.3c0.5,0.7,1.1,1.2,1.8,1.6s1.5,0.7,2.3,0.9s1.6,0.3,2.4,0.3c0.8,0,1.5-0.1,2.2-0.2
@@ -265,10 +257,10 @@
     <section class="message">
       <h3>Message User</h3>
 
-      <form action="#" class="widget-container">
+      <form action="#">
         <input type="text" class="form-field" id="user-field" placeholder="Search for User">
         <textarea class="form-area" id="form-field" placeholder="Message for User"></textarea>
-        <button class="button-primary" class="send">Send</button>
+        <button class="button-primary" id="send">Send</button>
       </form>
     </section>
 
@@ -282,7 +274,7 @@
         <strong>
           Send Email Notifications
         </strong>
-        <span id="toggle-button-2">
+        <span id="toggle-button-1">
           <span>Off</span>
           <span>On</span>
           <a></a>
@@ -301,10 +293,74 @@
       </label>
 
       <select id="timezone" class="form-field">
-        <option disabled selected>Select your Timezone</option>
-        <option>Eastern</option>
-        <option>Central</option>
-        <option>Pacific</option>
+        <option disabled>Select your Timezone</option>
+        <option value="Hawaii">(GMT-10:00) Hawaii</option>
+    		<option value="Alaska">(GMT-09:00) Alaska</option>
+    		<option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+    		<option value="Arizona">(GMT-07:00) Arizona</option>
+    		<option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+    		<option value="Central Time (US &amp; Canada)">(GMT-06:00) Central Time (US &amp; Canada)</option>
+    		<option value="Eastern Time (US &amp; Canada)" selected="selected">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+    		<option value="Indiana (East)">(GMT-05:00) Indiana (East)</option><option value="" disabled="disabled">-------------</option>
+    		<option value="International Date Line West">(GMT-11:00) International Date Line West</option>
+    		<option value="Midway Island">(GMT-11:00) Midway Island</option>
+    		<option value="Samoa">(GMT-11:00) Samoa</option>
+    		<option value="Tijuana">(GMT-08:00) Tijuana</option>
+    		<option value="Chihuahua">(GMT-07:00) Chihuahua</option>
+    		<option value="Mazatlan">(GMT-07:00) Mazatlan</option>
+    		<option value="Central America">(GMT-06:00) Central America</option>
+    		<option value="Guadalajara">(GMT-06:00) Guadalajara</option>
+    		<option value="Mexico City">(GMT-06:00) Mexico City</option>
+    		<option value="London">(GMT) London</option>
+    		<option value="Monrovia">(GMT) Monrovia</option>
+    		<option value="Amsterdam">(GMT+01:00) Amsterdam</option>
+    		<option value="Belgrade">(GMT+01:00) Belgrade</option>
+    		<option value="Berlin">(GMT+01:00) Berlin</option>
+    		<option value="Bratislava">(GMT+01:00) Bratislava</option>
+    		<option value="Brussels">(GMT+01:00) Brussels</option>
+    		<option value="Budapest">(GMT+01:00) Budapest</option>
+    		<option value="Copenhagen">(GMT+01:00) Copenhagen</option>
+    		<option value="Ljubljana">(GMT+01:00) Ljubljana</option>
+    		<option value="Madrid">(GMT+01:00) Madrid</option>
+    		<option value="Paris">(GMT+01:00) Paris</option>
+    		<option value="Prague">(GMT+01:00) Prague</option>
+    		<option value="Rome">(GMT+01:00) Rome</option>
+    		<option value="Athens">(GMT+02:00) Athens</option>
+    		<option value="Bucharest">(GMT+02:00) Bucharest</option>
+    		<option value="Helsinki">(GMT+02:00) Helsinki</option>
+    		<option value="Istanbul">(GMT+02:00) Istanbul</option>
+    		<option value="Baghdad">(GMT+03:00) Baghdad</option>
+    		<option value="Kuwait">(GMT+03:00) Kuwait</option>
+    		<option value="Moscow">(GMT+03:00) Moscow</option>
+    		<option value="Nairobi">(GMT+03:00) Nairobi</option>
+    		<option value="Tehran">(GMT+03:30) Tehran</option>
+    		<option value="Abu Dhabi">(GMT+04:00) Abu Dhabi</option>
+    		<option value="Kolkata">(GMT+05:30) Kolkata</option>
+    		<option value="Mumbai">(GMT+05:30) Mumbai</option>
+    		<option value="New Delhi">(GMT+05:30) New Delhi</option>
+    		<option value="Bangkok">(GMT+07:00) Bangkok</option>
+    		<option value="Hanoi">(GMT+07:00) Hanoi</option>
+    		<option value="Jakarta">(GMT+07:00) Jakarta</option>
+    		<option value="Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
+    		<option value="Beijing">(GMT+08:00) Beijing</option>
+    		<option value="Chongqing">(GMT+08:00) Chongqing</option>
+    		<option value="Hong Kong">(GMT+08:00) Hong Kong</option>
+    		<option value="Kuala Lumpur">(GMT+08:00) Kuala Lumpur</option>
+    		<option value="Perth">(GMT+08:00) Perth</option>
+    		<option value="Singapore">(GMT+08:00) Singapore</option>
+    		<option value="Taipei">(GMT+08:00) Taipei</option>
+    		<option value="Ulaan Bataar">(GMT+08:00) Ulaan Bataar</option>
+    		<option value="Urumqi">(GMT+08:00) Urumqi</option>
+    		<option value="Osaka">(GMT+09:00) Osaka</option>
+    		<option value="Sapporo">(GMT+09:00) Sapporo</option>
+    		<option value="Seoul">(GMT+09:00) Seoul</option>
+    		<option value="Tokyo">(GMT+09:00) Tokyo</option>
+    		<option value="Yakutsk">(GMT+09:00) Yakutsk</option>
+    		<option value="Adelaide">(GMT+09:30) Adelaide</option>
+    		<option value="Darwin">(GMT+09:30) Darwin</option>
+    		<option value="Brisbane">(GMT+10:00) Brisbane</option>
+    		<option value="Canberra">(GMT+10:00) Canberra</option>
+    		<option value="Guam">(GMT+10:00) Guam</option>
       </select>
 
       <div class="settings-button">
@@ -314,7 +370,7 @@
     </section>
 
   </main>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <script src="js/scripts.js"></script>
 
 </body>
