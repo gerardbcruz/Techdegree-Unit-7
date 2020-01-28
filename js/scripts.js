@@ -8,12 +8,101 @@ const user = document.getElementById("user-field");
 const message = document.getElementById("form-field");
 const send = document.getElementById("send");
 
+const bell = document.querySelector('.bell');
+const notifications = document.querySelector('.notifications');
+
+const trafficNav = document.querySelector('.traffic-nav');
+const trafficNavLinks = document.querySelectorAll('.traffic-nav-link');
+
+
+// Traffic Chart Nav Event Listener
+trafficNav.addEventListener("click", (e) => {
+  trafficNavLink = e.target;
+  //Remove all active classes on trafficNavLinks
+  for (let i=0; i < trafficNavLinks.length; i++) {
+    trafficNavLinks[i].classList.remove("active");
+  }
+  //
+  if (trafficNavLink.textContent === 'Hourly') {
+    createTrafficChart(trafficDataHourly);
+    trafficNavLink.classList.add("active");
+  } else if (trafficNavLink.textContent === 'Daily') {
+    createTrafficChart(trafficDataDaily);
+    trafficNavLink.classList.add("active");
+  } else if (trafficNavLink.textContent === 'Weekly') {
+    createTrafficChart(trafficDataWeekly);
+    trafficNavLink.classList.add("active");
+  } else if (trafficNavLink.textContent === 'Monthly') {
+    createTrafficChart(trafficDataMonthly);
+    trafficNavLink.classList.add("active");
+  }
+})
+
+
+// Notifications Drop Down
+notifications.style.display = "none";
+
+bell.addEventListener("click", () => {
+  if (notifications.style.display === "none") {
+    notifications.style.display = "block";
+  } else if (notifications.style.display === "block") {
+    notifications.style.display = "none";
+  }
+})
+
+
 // Traffic Line Chart Data and Options
-const trafficData = {
+const trafficDataHourly = {
+    labels: ['8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM'],
+    datasets: [{
+        data: [175, 125, 225, 75, 115, 200, 100, 140, 99, 105, 63],
+        backgroundColor: 'rgba(115,119,191,0.24)',
+        borderColor: 'rgba(115,119,191,0.74)',
+        borderWidth: 1,
+        pointRadius: 7,
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 3,
+        pointBorderColor: '#7477BF',
+        lineTension: 0
+    }]
+}
+
+const trafficDataDaily = {
+    labels: ["S", "M", "T", "W", "T", "F", "S"],
+    datasets: [{
+        data: [75, 115, 175, 125, 225, 200, 100],
+        backgroundColor: 'rgba(115,119,191,0.24)',
+        borderColor: 'rgba(115,119,191,0.74)',
+        borderWidth: 1,
+        pointRadius: 7,
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 3,
+        pointBorderColor: '#7477BF',
+        lineTension: 0
+    }]
+}
+
+const trafficDataWeekly = {
     labels: ['16-22', '23-29', '30-5', '6-12', '13-19', '20-26', '27-3', '4-10', '11-17', '18-24', '25-31'],
     datasets: [{
         data: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,
         2500],
+        backgroundColor: 'rgba(115,119,191,0.24)',
+        borderColor: 'rgba(115,119,191,0.74)',
+        borderWidth: 1,
+        pointRadius: 7,
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 3,
+        pointBorderColor: '#7477BF',
+        lineTension: 0
+    }]
+}
+
+const trafficDataMonthly = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    datasets: [{
+        data: [1250, 900, 2000, 750, 1500, 1750, 1200, 1800, 2250, 1500,
+        2400, 1100],
         backgroundColor: 'rgba(115,119,191,0.24)',
         borderColor: 'rgba(115,119,191,0.74)',
         borderWidth: 1,
@@ -41,6 +130,10 @@ const trafficOptions = {
         display: false
       }
 }
+
+// Initialize Page with Traffic Data - Weekly
+createTrafficChart(trafficDataWeekly);
+
 
 // Daily Bar Chart Data and Options
 const dailyData = {
@@ -124,14 +217,16 @@ send.addEventListener("click", (e) => {
 
 
 // Create Traffic Line Chart
-const trafficChart = new Chart(trafficCanvas, {
-    // The type of chart we want to create
-    type: 'line',
-    // The data for our dataset
-    data: trafficData,
-    // Configuration options go here
-    options: trafficOptions
-});
+function createTrafficChart(trafficData) {
+  const trafficChart = new Chart(trafficCanvas, {
+      // The type of chart we want to create
+      type: 'line',
+      // The data for our dataset
+      data: trafficData,
+      // Configuration options go here
+      options: trafficOptions
+  });
+}
 
 
 // Create Bar Graph Chart
@@ -154,3 +249,7 @@ const donutChart = new Chart(mobileCanvas, {
     // Configuration options go here
     options: mobileOptions
 });
+
+
+
+//TESTING
