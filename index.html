@@ -23,11 +23,14 @@
           <div class="bell-round"></div>
           <div class="notifications">
             <!-- wrapper for notifications -->
-            <h3>Notifications</h3>
-            <div class="notifications-inner">
-              <p><span class="bold">Victoria Chambers</span> commented on YourApp's SEO Tips &#8226; <span class="light-small">4 hours ago</span></p>
-              <p><span class="bold">Dale Byrd</span> like the post Faceboook's changes for 2016 &#8226; <span class="light-small">5 hours ago</span></p>
+            <div class="notifications-inner arrow-top">
+              <h3>Notifications</h3>
+              <div class="notifications-inner-text">
+                <p><span class="bold">Victoria Chambers</span> commented on YourApp's SEO Tips &#8226; <span class="light-small">4 hours ago</span></p>
+                <p><span class="bold">Dale Byrd</span> like the post Faceboook's changes for 2016 &#8226; <span class="light-small">5 hours ago</span></p>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -40,18 +43,28 @@
 
   <!-- Left Side Navigation -->
   <nav>
-    <a href="#">
-      <img src="icons/icon-dashboard.svg" alt="dashboard">
-    </a>
-    <a href="#">
-      <img src="icons/icon-members.svg" alt="members">
-    </a>
-    <a href="#">
-      <img src="icons/icon-visits.svg" alt="visits">
-    </a>
-    <a href="#">
-      <img src="icons/icon-settings.svg" alt="settings">
-    </a>
+    <ul>
+      <li class="nav-active">
+        <a href="#">
+          <img src="icons/icon-dashboard.svg" alt="dashboard">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="icons/icon-members.svg" alt="members">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="icons/icon-visits.svg" alt="visits">
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <img src="icons/icon-settings.svg" alt="settings">
+        </a>
+      </li>
+    </ul>
   </nav>
 
 
@@ -264,7 +277,10 @@
       <h3>Message User</h3>
 
       <form action="#">
-        <input type="text" class="form-field" id="user-field" placeholder="Search for User">
+        <div class="input-container">
+          <input type="text" class="form-field" id="user-field" placeholder="Search for User">
+          <ul class="autocomplete"></ul>
+        </div>
         <textarea class="form-area" id="form-field" placeholder="Message for User"></textarea>
         <button class="button-primary" id="send">Send</button>
       </form>
