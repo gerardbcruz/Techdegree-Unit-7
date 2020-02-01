@@ -22,6 +22,14 @@ const user = document.getElementById("user-field");
 const message = document.getElementById("form-field");
 const send = document.getElementById("send");
 
+//Settings Section
+const emailToggleButton = document.getElementById("email-toggle-button").firstElementChild;
+const privacyToggleButton = document.getElementById("privacy-toggle-button").firstElementChild;
+const select = document.getElementById("timezone");
+const selectOptions = document.querySelectorAll("option");
+const save = document.getElementById("save");
+const cancel = document.getElementById("cancel");
+
 // Messaging Autocomplete
 const autoComplete = document.querySelector('.autocomplete');
 const autoCompleteNames = [
@@ -177,6 +185,30 @@ function createTrafficChart(trafficData) {
   });
 }
 
+// Check the state of toggle switch from Local Storage 
+function checkToggleState(toggleButton) {
+  if (localStorage.getItem(toggleButton) && localStorage.getItem(toggleButton) === "true") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Adds items to Local Storage
+function saveSettings() {
+  localStorage.setItem("emailToggle", emailToggleButton.checked);
+  localStorage.setItem("privacyToggle", privacyToggleButton.checked);
+  localStorage.setItem("timezone", select.value);
+}
+
+// Removes items from Local Storage
+function clearSettings() {
+  localStorage.removeItem("emailToggle");
+  localStorage.removeItem("privacyToggle");
+  localStorage.removeItem("timezone");
+}
+
+// Initialize the page
 function initializePage() {
   // Create Alert Banner on page load
   alertBanner.innerHTML =
@@ -215,6 +247,28 @@ function initializePage() {
       // Configuration options go here
       options: mobileOptions
   });
+
+  // Initialize Settings Widget
+  if (checkToggleState("emailToggle")) {
+    emailToggleButton.checked = true;
+  } else {
+    emailToggleButton.checked = false;
+  }
+
+  if (checkToggleState("privacyToggle")) {
+    privacyToggleButton.checked = true;
+  } else {
+    privacyToggleButton.checked = false;
+  }
+
+  if (localStorage.getItem("timezone")) {
+    for (let i=0; i < selectOptions.length; i++) {
+      selectOptions[i].removeAttribute("selected");
+      if (localStorage.getItem("timezone") === selectOptions[i].value) {
+        selectOptions[i].setAttribute("selected", "selected");
+      }
+    }
+  }
 }
 
 /////////// INITIALIZE PAGE ///////////
@@ -294,8 +348,6 @@ user.addEventListener("keyup", () => {
     if (searchValue && lowerCaseName.indexOf(searchValue) > -1) {
       autoComplete.style.display = "block";
       li.style.display = "block";
-      console.log(searchValue);
-      console.log(lowerCaseName);
     } else {
       li.style.display = "none";
     }
@@ -307,4 +359,14 @@ autoComplete.addEventListener("click", (e) => {
   li = e.target;
   user.value = li.textContent;
   autoComplete.style.display = "none";
+})
+
+// Saves Settings to Local Storage
+save.addEventListener("click", (e) => {
+  saveSettings();
+})
+
+// Clear Settings from Local Storage
+cancel.addEventListener("click", (e) => {
+  clearSettings();
 })
