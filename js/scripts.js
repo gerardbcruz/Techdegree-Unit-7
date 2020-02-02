@@ -185,7 +185,7 @@ function createTrafficChart(trafficData) {
   });
 }
 
-// Check the state of toggle switch from Local Storage 
+// Check the state of toggle switch from Local Storage
 function checkToggleState(toggleButton) {
   if (localStorage.getItem(toggleButton) && localStorage.getItem(toggleButton) === "true") {
     return true;
@@ -222,7 +222,7 @@ function initializePage() {
   // Hide Search Autocomplete
   autoComplete.style.display = "none";
 
-  // Hide Notifications Drop Down
+  // Hide Bell Notifications
   notifications.style.display = "none";
 
   // Initialize Page with Traffic Data - Weekly

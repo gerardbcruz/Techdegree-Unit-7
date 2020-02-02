@@ -134,6 +134,7 @@ h1 {
 }
 
 .notifications {
+  display: none;
   position: absolute;
   background: #FBFBFB;
   left: -204px;
